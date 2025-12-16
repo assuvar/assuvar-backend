@@ -1,5 +1,7 @@
 # Dependencies
-node_modules/
+node_modules
+.pnp
+.pnp.js
 
 # Environment variables
 .env
@@ -15,19 +17,21 @@ yarn-error.log*
 logs
 *.log
 
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
 
-# Coverage directory used by tools like istanbul
-coverage/
-
-# OS metadata
+# OS
 .DS_Store
 Thumbs.db
 
-# IDEs
-.vscode/
-.idea/
+# Build
+dist/
+build/
+coverage/
+
+# API Keys & Secrets
+keys/
+secrets/
