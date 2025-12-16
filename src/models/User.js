@@ -5,6 +5,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    username: {
+        type: String,
+        unique: true,
+        required: true,
+    },
     email: {
         type: String,
         required: true,
@@ -12,17 +17,30 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
-    },
-    phone: {
-        type: String,
-        required: true,
+        required: true, // Hashed
     },
     role: {
         type: String,
-        enum: ['admin', 'employee', 'client'],
-        default: 'client',
+        enum: ['admin', 'employee', 'client', 'partner'],
+        required: true,
     },
+    status: {
+        type: String,
+        enum: ['invited', 'active', 'suspended'],
+        default: 'invited',
+    },
+    isFirstLogin: {
+        type: Boolean,
+        default: true,
+    },
+    profileId: {
+        type: mongoose.Schema.Types.ObjectId,
+        refPath: 'roleProfileModel', // Dynamic ref based on role
+    },
+    roleProfileModel: {
+        type: String,
+        enum: ['ClientProfile', 'EmployeeProfile', 'PartnerProfile', 'AdminProfile'],
+    }
 }, {
     timestamps: true,
 });

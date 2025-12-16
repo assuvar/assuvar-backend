@@ -38,6 +38,7 @@ app.use('/api/sales', saleRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/projects', projectRoutes);
 app.use('/api/payroll', payrollRoutes);
+app.use('/api/admin', require('./routes/adminRoutes'));
 
 const PORT = process.env.PORT || 5000;
 
